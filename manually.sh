@@ -15,7 +15,7 @@ curl -L https://github.com/google/flatbuffers/archive/v${FB_VERSION}.tar.gz | ta
 
 ls /tmp
 ls /tmp/flatbuffers-${FB_VERSION}
-cp -r /tmp/flatbuffers-${FB_VERSION}/include remote_op/flatbuffers/
+cp -r /tmp/flatbuffers-${FB_VERSION}/ remote_op/flatbuffers/
 
 
 pip3 install -r test-requirements.txt
