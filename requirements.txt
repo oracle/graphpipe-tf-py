@@ -1,5 +1,5 @@
 numpy>=1.13.3
 requests==2.18.4
 tensorflow>=1.4.0
--e git+https://github.com/oracle/graphpipe#egg=graphpipe
+-e git+https://github.com/oracle/graphpipe-py#egg=graphpipe
 flatbuffers==1.9.0
