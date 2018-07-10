@@ -19,7 +19,8 @@ def serve(host, port, model):
 
     inputs = []
     outputs = []
-    for op in g.get_operations():
+    ops = g.get_operations()
+    for op in ops:
         for tensor in op.outputs:
             shape = tensor.get_shape()
             if shape._dims is None:
@@ -58,8 +59,15 @@ def serve(host, port, model):
             else:
                 feed_dict = {}
                 y = []
+                if req.input_names == []:
+                    req.input_names = [b""]
+                if req.output_names == []:
+                    req.output_names = [b""]
                 for name in req.output_names:
                     name = name.decode()
+                    # default output_name to the last op
+                    if name == "":
+                        name = ops[-1].name
                     if ':' not in name:
                         name += ':0'
                     y.append(g.get_tensor_by_name(name))
@@ -67,6 +75,9 @@ def serve(host, port, model):
                     y = [g.get_operations()[-1].outputs[0]]
                 for i, t in enumerate(req.input_tensors):
                     name = req.input_names[i].decode()
+                    # default input name to the first op
+                    if name == "":
+                        name = ops[0].name
                     if ':' not in name:
                         name += ':0'
                     x = g.get_tensor_by_name(name)
