@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+"""
+Extremely simple tensorflow graphpipe model server
+"""
+
 import argparse
 from http import server
 
@@ -40,9 +44,9 @@ def serve(host, port, model):
             outputs.append(t)
 
     metadata = {
-        "name": "mymodel",
+        "name": model,
         "version": "1.2",
-        "server": "python server",
+        "server": "example python model server",
         "inputs": inputs,
         "outputs": outputs,
     }
