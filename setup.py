@@ -7,13 +7,12 @@ from os import path
 
 
 
-# FIXME(vish): disabled remote op until it is converted
-# class BinaryDistribution(Distribution):
-#     """Distribution which always forces a binary package with platform name"""
-#     def has_ext_modules(self):
-#         return True
-#
-#
+class BinaryDistribution(setuptools.Distribution):
+    """Distribution which always forces a binary package with platform name"""
+    def has_ext_modules(self):
+        return True
+
+
 subprocess.call(['make', '-C', 'remote_op'])
 
 here = path.abspath(path.dirname(__file__))
