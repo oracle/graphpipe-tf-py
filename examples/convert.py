@@ -2,6 +2,8 @@
 
 import collections
 import os.path
+import os
+import stat
 
 import tensorflow as tf
 
@@ -38,6 +40,11 @@ def h5_to_pb(h5, pb):
     write_graph(constantize(h5), pb)
 
 
+def copy_perms(source, target):
+    st = os.stat(source)
+    os.chown(target, st[stat.ST_UID], st[stat.ST_GID])
+
+
 if __name__ == "__main__":
     # disable gpu for conversion
     config = tf.ConfigProto(allow_soft_placement=True,
@@ -50,4 +57,5 @@ if __name__ == "__main__":
         print('usage: {} <src_fname> <dst_fname>'.format(sys.argv[0]))
         sys.exit(1)
     h5_to_pb(sys.argv[1], sys.argv[2])
+    copy_perms(sys.argv[1], sys.argv[2])
     print('saved the constant graph (ready for inference) at: ', sys.argv[2])
