@@ -10,6 +10,7 @@ from tensorflow.contrib.keras import models
 from tensorflow.python.framework import graph_io
 from tensorflow.python.framework import graph_util
 
+
 def write_graph(graph, fname):
     d, f = os.path.split(os.path.abspath(fname))
     graph_io.write_graph(graph, d, f, as_text=False)
@@ -36,6 +37,7 @@ def constantize(fname):
 def h5_to_pb(h5, pb):
     write_graph(constantize(h5), pb)
 
+
 if __name__ == "__main__":
     # disable gpu for conversion
     config = tf.ConfigProto(allow_soft_placement=True,
@@ -49,4 +51,3 @@ if __name__ == "__main__":
         sys.exit(1)
     h5_to_pb(sys.argv[1], sys.argv[2])
     print('saved the constant graph (ready for inference) at: ', sys.argv[2])
-
