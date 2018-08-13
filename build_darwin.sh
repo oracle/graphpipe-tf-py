@@ -15,7 +15,6 @@ FB_VERSION=1.9.0
 
 if [ ! -d "flatbuffers" ]; then
     curl -L https://github.com/google/flatbuffers/archive/v${FB_VERSION}.tar.gz | tar -xz
-    cp -r /tmp/flatbuffers-${FB_VERSION} remote_op/flatbuffers
     mv flatbuffers-${FB_VERSION} flatbuffers
 fi
 
