@@ -1,3 +1,13 @@
+"""This example illustrates using remote_ops in a tensorflow graph
+
+In this example, we use two calls to the same VGG graph. We collect
+the output of the last fully connected layer and then send that as
+input through the rest of the graph to get class predictions.
+
+This illustrates how one might extract bottleneck features from a
+trained model and use them as input to another model.
+"""
+
 import argparse
 
 import numpy as np
