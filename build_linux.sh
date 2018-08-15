@@ -18,6 +18,7 @@ FB_VERSION=1.9.0
 if [ ! -d "flatbuffers" ]; then
     curl -L https://github.com/google/flatbuffers/archive/v${FB_VERSION}.tar.gz | tar -xz
     mv flatbuffers-${FB_VERSION}/ flatbuffers
+fi
 
 make clean; make
 
