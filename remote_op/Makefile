@@ -18,6 +18,7 @@ FLAGS = -std=c++11 \
 		-L$(TF_LIB) \
 		$(INCLUDES) \
 		$(LIBS) \
+		$(EXTRA_FLAGS) \
 		-D_GLIBCXX_USE_CXX11_ABI=0
 
 FILES = remote_op.cc

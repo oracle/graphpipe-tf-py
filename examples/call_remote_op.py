@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """This example illustrates using remote_ops in a tensorflow graph
 
 In this example, we use two calls to the same VGG graph. We collect

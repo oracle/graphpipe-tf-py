@@ -33,7 +33,7 @@ will happily run a build for you in a docker container.
   make build
 ```
 
-See `manually.sh` for the additional headers besides libcurl that you will
+See `build_linux.sh` for the additional headers besides libcurl that you will
 need to build the C library. (From tensorflow and flatbuffers)
 
 If you've successfully built the C library, to build installation packages:

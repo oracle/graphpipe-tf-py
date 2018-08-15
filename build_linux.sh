@@ -8,22 +8,22 @@ apt-get install -y libcurl4-openssl-dev curl
 TF_DIR=/usr/local
 TF_TYPE=gpu
 
-curl -L "https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-${TF_TYPE}-linux-x86_64-1.8.0.tar.gz" | tar -C ${TF_DIR} -xz; \
+if [ ! -e "/usr/local/lib/libtensorflow.so" ]; then
+    curl -L "https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-${TF_TYPE}-linux-x86_64-1.8.0.tar.gz" | tar -C ${TF_DIR} -xz
+fi
+
+pushd remote_op
 
 FB_VERSION=1.9.0
-curl -L https://github.com/google/flatbuffers/archive/v${FB_VERSION}.tar.gz | tar -C /tmp -xz
+if [ ! -d "flatbuffers" ]; then
+    curl -L https://github.com/google/flatbuffers/archive/v${FB_VERSION}.tar.gz | tar -xz
+    mv flatbuffers-${FB_VERSION}/ flatbuffers
 
-ls /tmp
-ls /tmp/flatbuffers-${FB_VERSION}
-cp -r /tmp/flatbuffers-${FB_VERSION}/ remote_op/flatbuffers/
+make clean; make
 
+popd
 
 pip3 install -r test-requirements.txt
-
-make -C remote_op
-
 python setup.py bdist_wheel
-
-chown -R $1 build dist graphpipe_tf.egg-info
 
 #exec gosu tox tox
