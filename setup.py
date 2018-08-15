@@ -25,12 +25,14 @@ with open('requirements.txt') as f:
 
 setuptools.setup(
     name='graphpipe_tf',
-    version='1.0.0',
+    version='1.0.1',
     description='Graphpipe helpers for TensorFlow remote ops',
     long_description=long_description,
     long_description_content_type="text/markdown",
     author='OCI ML Team',
+    install_requires=requirements,
     author_email='vish.ishaya@oracle.com',
+    url='https://oracle.github.io/graphpipe',
     classifier=[
         'Intended Audience :: Information Technology',
         'Intended Audience :: System Administrators',

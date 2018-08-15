@@ -25,4 +25,4 @@ popd
 
 
 pip3 install -r test-requirements.txt
-python setup.py sdist bdist_wheel
+python setup.py bdist_wheel
