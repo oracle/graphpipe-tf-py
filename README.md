@@ -6,9 +6,8 @@ GraphPipe remote model from within a local tensorflow graph.  The new operation
 is called remote_op and communicates with the remote model using libcurl and
 the GraphPipe protocol.
 
-Additionaly, a new keras layer is included based on the
-remote operation.  This allaws you to include a layer in a keras model that
-makes a remote call.
+Additionaly, a new keras layer is included based on the remote operation.  This
+allows you to include a layer in a keras model that makes a remote call.
 
 Finally, various examples are included of serving tensorflow models in python.
 For production, a more performant server like
