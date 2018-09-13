@@ -81,7 +81,7 @@ def serve(host, port, model):
                     name = req.input_names[i].decode()
                     # default input name to the first op
                     if name == "":
-                        name = ops[0].name
+                        name = ops[i].name
                     if ':' not in name:
                         name += ':0'
                     x = g.get_tensor_by_name(name)
